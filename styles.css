@@ -1,0 +1,229 @@
+:root{
+  --coolGreen:#C7F441;
+  --mainFont:Verdana, Geneva, Tahoma, sans-serif;
+  --secondaryFont:'Courier New', Courier, monospace;
+  --generalMargin:9rem;
+  --boxcolor:#181818;
+
+}
+
+
+*{
+  border: 0px;
+  margin: 0px;
+  padding:0px;
+  box-sizing: border-box;
+}
+
+button{
+  cursor:pointer;
+  transition: all 0.5s ease;
+
+}
+
+button:hover{
+  transform: translateY(-0.1rem);
+
+
+}
+
+
+body{
+  background-color: #0A0A0A;
+  color: white;
+}
+/* first section */
+
+.first{
+  color: white;
+  margin-right: var(--generalMargin);
+  margin-left: var(--generalMargin);
+  margin-top:5rem ;
+  font-family: var(--secondaryFont);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+
+.first .one{
+  font-size: 1.3rem;
+  color: var(--coolGreen);
+
+}
+
+.first .two{
+  letter-spacing: 1.3rem;
+  font-size: 3rem;
+  font-weight:900;
+  font-family: var(--mainFont);
+
+}
+
+.first .three{
+  color: rgb(172, 172, 172);
+  font-size: 1rem;
+  font-family: var(--secondaryFont);
+
+}
+
+
+
+/* second section */
+
+.second{
+  margin-left: var(--generalMargin);
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  margin-right: var(--generalMargin);
+
+}
+
+.second>div {
+  flex : 1 1 0;
+  background-color: var(--boxcolor);
+  height: 5rem;
+  border-radius: 0.5rem;
+  border: solid rgb(37, 37, 37) 0.1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.second>div .smallTxt {
+font-family: var(--secondaryFont);
+color: rgb(95, 95, 95);
+
+}
+
+.second>div .pendingNo{
+color: var(--coolGreen);
+font-family: var(--mainFont);
+font-weight: 900;
+font-size: 1.2rem;
+}
+
+.second>div .completedNo{
+color: white;
+font-family: var(--mainFont);
+font-weight: 900;
+font-size: 1.2rem;
+}
+
+/* third section */
+
+.third{
+  margin-top:2rem ;
+  margin-bottom: 2rem;;
+  margin-left: var(--generalMargin);
+  margin-right: var(--generalMargin);
+  color: var(--boxcolor);
+  gap: 0.5rem;
+}
+
+.third .content{
+  display: flex;
+  gap: 0.5rem;
+
+}
+
+.third .content input {
+  flex: 1 1 0;
+  height: 2rem;
+  background-color: var(--boxcolor);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: solid rgb(37, 37, 37) 0.1rem;
+  color: white;
+
+}
+
+.third .content button{
+  width: 5rem;
+  color: black;
+  border: black solid 0.1rem;
+  border-radius: 0.2rem;
+  background-color: var(--coolGreen);
+
+}
+
+/* last section */
+
+.lastSection {
+  margin-left: var(--generalMargin);
+  margin-right: var(--generalMargin);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lastSection .first_{
+  display: flex;
+  gap: 0.5rem;
+
+}
+.lastSection .first_ button{
+  height: 2rem;
+  background-color: #0A0A0A;
+  width: 6rem;
+  color: rgb(77, 77, 77);
+  border:var(--boxcolor) 0.1rem solid;
+  border-radius: 3rem;
+}
+
+ .lastSection .main{
+  display: flex;
+  flex-direction: row;
+justify-content: center;
+    align-items: center;
+
+
+ }
+
+ 
+ .lastSection .main{
+  display: flex;
+
+
+
+ }
+  .lastSection .main p{
+    font-family: var(--secondaryFont);
+    color: rgb(87, 87, 87)
+
+    
+ }
+
+
+ /* cards  */
+
+ .cards{
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--boxcolor);
+  color: white;
+  width: 100%;
+  font-size: 1.6rem;
+  border: #181818 solid 0.1rem;
+  border-radius: 0.5rem;
+ }
+
+ .cards .check input{
+  size: 2rem;
+
+ }
+
+  .cards  button{
+    background-color: var(--boxcolor);
+    font-size: 1.6rem;
+    color: white;
+ }
+
+   .cards  button:hover{
+    color: red;
+ }
+
