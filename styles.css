@@ -173,6 +173,10 @@ font-size: 1.2rem;
   border-radius: 3rem;
 }
 
+.lastSection .first_ button.active{
+  color:#C7F441;
+  border-color:#C7F441;
+}
  .lastSection .main{
   display: flex;
   flex-direction: row;
