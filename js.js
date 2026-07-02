@@ -14,8 +14,28 @@ document.querySelector(".first .three").textContent=days[now.getDay()]+","+month
 
 
 function addTaskCard(str){
+    function presentInDone(x){
+      for (let i=0;i<tasks.completed.length;i++){
+        if(tasks.completed[i]==x) return true;
+      }
+      return false;
+    }
+
+  let decide = presentInDone(str)
   let card = document.createElement("div")
   card.className = "cards";
+  if(decide){
+  card.innerHTML=`
+  <div class="check">
+    <input type="checkbox"id="task" checked>
+
+    <label for="task">${str}</label>
+  </div>
+    <button>✕</button>
+  </div>  
+    `
+  }
+  else {
   card.innerHTML=`
   <div class="check">
     <input type="checkbox"id="task">
@@ -25,6 +45,8 @@ function addTaskCard(str){
     <button>✕</button>
   </div>  
     `
+  }
+
   document.querySelector(".lastSection .main").append(card)
 
 }
@@ -43,6 +65,7 @@ function addTask(){
   if(document.querySelector(".lastSection .main p").textContent!="") document.querySelector(".lastSection .main p").textContent="";
     tasks.all.push(input.value)
     tasks.pending.push(input.value)
+    displayNum()
     taskVal=input.value
     input.value=""
     addTaskCard(taskVal)
@@ -54,6 +77,7 @@ function addTask(){
     if(input.value!==""){
     tasks.all.push(input.value)
     tasks.pending.push(input.value)
+    displayNum()
     taskVal=input.value
     input.value=""
     addTaskCard(taskVal)
@@ -64,7 +88,18 @@ function addTask(){
 
 }
 
+function displayNum(){
+  let pendingNum = document.querySelector(".pendingNo")
+  let completedNum = document.querySelector(".completedNo")
+
+  pendingNum.innerText=tasks.pending.length
+  completedNum.innerText=tasks.completed.length
+
+}
+
+
 function displayCards3Btns(){
+
   let activeFilter;
   let all = document.querySelector(".lastSection .first_ .all")
   let pending = document.querySelector(".lastSection .first_ .pending")
@@ -79,16 +114,20 @@ function displayCards3Btns(){
       card.remove()
     })
 
+
     activeFilter=all;
     all.classList.add("active")
     done.classList.remove("active")
     pending.classList.remove("active")
 
-
+    
     if(tasks.all.length===0) document.querySelector(".lastSection .main p").textContent="No tasks here. Add one above.";
     else {document.querySelector(".lastSection .main p").textContent="";
       tasks.all.forEach(function(x){
       addTaskCard(x)
+
+
+
     })}
 
   })
@@ -135,10 +174,11 @@ function displayCards3Btns(){
     })}
 
 
+
   })
 
 
-function clickCross(){
+function clickCards(){
 
   let click = new Event("click")
 
@@ -148,8 +188,10 @@ function clickCross(){
       let cardToRemove=e.target.closest(".cards")
       let taskTxt=cardToRemove.querySelector(".check label").textContent
       removeTaskFromArr(taskTxt)
+      displayNum()
       activeFilter.dispatchEvent(click)
       }
+
 
     if(e.target.tagName=="INPUT"){
       let el = e.target;
@@ -162,12 +204,17 @@ function clickCross(){
         }
       tasks.completed.push(taskk);
       }
+
       else{
         for(let i=0;i<tasks.completed.length;i++){
-          if(tasks.pending[i]===taskk) tasks.pending.splice(i,1)
+          if(tasks.completed[i]===taskk) tasks.completed.splice(i,1)
         }
       tasks.pending.push(taskk);
+
       }
+
+      displayNum()
+      activeFilter.dispatchEvent(selectAll)
 
     }
 
@@ -175,8 +222,7 @@ function clickCross(){
 }
 
   all.dispatchEvent(selectAll);
-  clickCross()
-  addTask()
+  clickCards()
 }
 
 function checkUncheck(){
@@ -204,5 +250,6 @@ function removeTaskFromArr(x){
 
 
 displayTime()
+addTask()
 displayCards3Btns()
-// addTask()
+

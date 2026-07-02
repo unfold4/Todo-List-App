@@ -179,20 +179,13 @@ font-size: 1.2rem;
 }
  .lastSection .main{
   display: flex;
-  flex-direction: row;
-justify-content: center;
-    align-items: center;
-
-
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
  }
 
  
- .lastSection .main{
-  display: flex;
-
-
-
- }
   .lastSection .main p{
     font-family: var(--secondaryFont);
     color: rgb(87, 87, 87)
@@ -204,6 +197,7 @@ justify-content: center;
  /* cards  */
 
  .cards{
+  
   display: flex;
   padding: 2rem;
   justify-content: space-between;
@@ -212,12 +206,13 @@ justify-content: center;
   color: white;
   width: 100%;
   font-size: 1.6rem;
-  border: #181818 solid 0.1rem;
+  border: #2c2c2c solid 0.1rem;
   border-radius: 0.5rem;
  }
 
  .cards .check input{
-  size: 2rem;
+  transform: scale(2);
+  cursor: pointer;
 
  }
 
@@ -230,4 +225,11 @@ justify-content: center;
    .cards  button:hover{
     color: red;
  }
+
+ .check{
+  display: flex;
+  gap: 2rem;
+ }
+
+
 
