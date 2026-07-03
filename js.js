@@ -1,7 +1,29 @@
+
 let tasks = {
   completed:[],
   pending:[],
   all:[]
+}
+
+
+
+function renderState(){
+displayCards3Btns()
+displayTime()
+
+  tasks = JSON.parse(localStorage.getItem("tasks"));
+  if(tasks===null){
+    tasks = {
+  completed:[],
+  pending:[],
+  all:[]
+}
+  }
+  
+  const click = new Event("click")
+  document.querySelector(".first_ .all").dispatchEvent(click);
+
+  displayNum()
 }
 
 
@@ -65,6 +87,7 @@ function addTask(){
   if(document.querySelector(".lastSection .main p").textContent!="") document.querySelector(".lastSection .main p").textContent="";
     tasks.all.push(input.value)
     tasks.pending.push(input.value)
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     displayNum()
     taskVal=input.value
     input.value=""
@@ -77,6 +100,7 @@ function addTask(){
     if(input.value!==""){
     tasks.all.push(input.value)
     tasks.pending.push(input.value)
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     displayNum()
     taskVal=input.value
     input.value=""
@@ -107,13 +131,9 @@ function displayCards3Btns(){
   let selectAll = new Event("click")
 
   all.addEventListener("click",function(){
-    // if(activeFilter===all) return
-
-
     document.querySelectorAll(".cards").forEach(function(card){
       card.remove()
     })
-
 
     activeFilter=all;
     all.classList.add("active")
@@ -188,6 +208,7 @@ function clickCards(){
       let cardToRemove=e.target.closest(".cards")
       let taskTxt=cardToRemove.querySelector(".check label").textContent
       removeTaskFromArr(taskTxt)
+      localStorage.setItem("tasks", JSON.stringify(tasks));
       displayNum()
       activeFilter.dispatchEvent(click)
       }
@@ -203,6 +224,7 @@ function clickCards(){
           if(tasks.pending[i]===taskk) tasks.pending.splice(i,1)
         }
       tasks.completed.push(taskk);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
       }
 
       else{
@@ -210,7 +232,7 @@ function clickCards(){
           if(tasks.completed[i]===taskk) tasks.completed.splice(i,1)
         }
       tasks.pending.push(taskk);
-
+      localStorage.setItem("tasks", JSON.stringify(tasks));
       }
 
       displayNum()
@@ -225,31 +247,23 @@ function clickCards(){
   clickCards()
 }
 
-function checkUncheck(){
-  let inputBox = document.querySelector(".lastSection .main .cards .check input")
-  inputBox.addEventListener("click",function(){
-    console.log(inputBox.check)
-  })
-
-}
 
 
 
 function removeTaskFromArr(x){
   for(let i=0;i<tasks.all.length;i++){
-    if(tasks.all[i]===x) tasks.all.splice(i,1)
+    if(tasks.all[i]===x) {tasks.all.splice(i,1);break;}
+
   }
   for(let i=0;i<tasks.pending.length;i++){
-    if(tasks.pending[i]===x) tasks.pending.splice(i,1)
+    if(tasks.pending[i]===x) {tasks.pending.splice(i,1);break;}
   }
   for(let i=0;i<tasks.completed.length;i++){
-    if(tasks.completed[i]===x) tasks.completed.splice(i,1)
+    if(tasks.completed[i]===x) {tasks.completed.splice(i,1);break;}
   }
 
 }
+renderState()
 
-
-displayTime()
 addTask()
-displayCards3Btns()
 
